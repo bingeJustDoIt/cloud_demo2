@@ -1,0 +1,13 @@
+#Eureka注册位置
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:9000/eureka/
+
+
+spring:
+  application:
+    name: @artifactId@
+  sleuth:
+    traceId128: true
+

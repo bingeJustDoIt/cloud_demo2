@@ -1,0 +1,40 @@
+server:
+  port: 9100
+#Eureka注册位置
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:9000/eureka/
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#      routes:
+#        - id: server
+#          uri: lb://server
+#          predicates:
+#            - Path=/server/**
+#          filters:
+#            - RewritePath=/(server/?.*), /$1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+
+
+#        locator:
+#          # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
+#          enabled: true
+#          # 用小写的请求路径的服务名匹配服务。默认为false（大写）。（因为服务注册时服务名被转成大写）
+#          lowerCaseServiceId: true
+#          filters:
+#            - name: RewritePath
+#              args:
+#                regexp: "/${serviceId}/(?<remaining>.*)"
+#                replacement: "/${serviceId}/${remaining}"
+
